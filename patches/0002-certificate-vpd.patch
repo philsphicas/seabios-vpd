@@ -1,0 +1,29 @@
+SPDX-License-Identifier: LGPL-3.0-only
+
+diff --git a/src/fw/paravirt.c b/src/fw/paravirt.c
+--- a/src/fw/paravirt.c
++++ b/src/fw/paravirt.c
+@@ -27,4 +27,5 @@
+ #include "stacks.h" // yield
++#include "cert-vpd.h" // cert_vpd_setup
+ 
+ // Amount of continuous ram under 4Gig
+ u32 RamSize;
+@@ -310,15 +311,17 @@ qemu_platform_setup(void)
+         if (RsdpAddr) {
++            cert_vpd_setup();
+             acpi_dsdt_parse();
+             virtio_mmio_setup_acpi();
+             return;
+         }
+         /* If present, loader should have installed an RSDP.
+          * Not installed? We might still be able to continue
+          * using the builtin RSDP.
+          */
+         if (!loader_err)
+             warn_internalerror();
+     }
+ 
+     acpi_setup();
++    cert_vpd_setup();
+ }

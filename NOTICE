@@ -1,0 +1,26 @@
+Project-authored code, including build scripts, configuration, tests and
+platform headers, is licensed under the MIT License. See LICENSE.
+
+Upstream: SeaBIOS
+https://github.com/coreboot/seabios
+
+src/tcgbios.c:
+Copyright (C) 2006-2011, 2014, 2015 IBM Corporation.
+Author: Stefan Berger <stefanb@linux.vnet.ibm.com>.
+GNU LGPL version 3.
+
+src/fw/paravirt.c:
+Copyright (C) 2013 Kevin O'Connor <kevin@koconnor.net>.
+Copyright (C) 2009 Red Hat Inc.
+Author: Gleb Natapov <gnatapov@redhat.com>.
+GNU LGPL version 3.
+
+The files in patches/ contain SeaBIOS-derived material and remain
+LGPL-3.0-only. Modified upstream files retain their original copyright and
+license notices.
+
+SeaBIOS includes LGPLv3, GPLv3 and permissively licensed components. Their
+applicable license terms continue to govern firmware builds and distributions.
+Upstream file notices are preserved in the corresponding-source archive.
+GNU license texts are included in platform/COPYING.LGPL-3.0 and
+platform/COPYING.GPL-3.0 and accompany binary releases.

@@ -1,0 +1,25 @@
+SPDX-License-Identifier: LGPL-3.0-only
+
+diff --git a/src/tcgbios.c b/src/tcgbios.c
+--- a/src/tcgbios.c
++++ b/src/tcgbios.c
+@@ -26,5 +26,6 @@
+ #include "stacks.h" // wait_threads, reset
+ #include "malloc.h" // malloc_high
++#include "fw/compat-fw-cfg.h" // compat_tpm_handoff_enabled
+ 
+ 
+ /****************************************************************
+@@ -1280,6 +1281,9 @@ tpm20_prepboot(void)
+-    ret = tpm20_hierarchychangeauth(auth);
+-    if (ret)
+-        goto err_exit;
++    /* Optionally leave platform authorization for guest initialization. */
++    if (!compat_tpm_handoff_enabled()) {
++        ret = tpm20_hierarchychangeauth(auth);
++        if (ret)
++            goto err_exit;
++    }
+ 
+     return;
+ 
